@@ -119,7 +119,7 @@ public class Main extends Application {
 	private void initBean() throws IOException{
 		System.setProperty("spring.profiles.active", "development");
 	    context = new ClassPathXmlApplicationContext("applicationContext.xml");
-//		context = new AnnotationConfigApplicationContext(AllConfiguration.class); 
+//		context = new AnnotationConfigApplicationContext(AllConfiguration.class); gcnfdjghc
 		carDealerService = context.getBean(CarDealerService.class);
 		carService = context.getBean(CarService.class);
 		logger = context.getBean(Logger.class);
