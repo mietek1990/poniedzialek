@@ -179,8 +179,6 @@ public class Main extends Application {
 			}
 		});
 		
-		
-		
 		addCarDealer.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
