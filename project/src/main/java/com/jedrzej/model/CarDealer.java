@@ -7,14 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "car_dealer")
 public class CarDealer {
 	
+	@NotNull
 	private int id;
+	@Size(min=1, max=25)
 	private String name;
+	@Size(min=8, max=20)
 	private String adress;
+	@Size(min=1, max=255)
 	private String description;
 	
 	@OneToMany(targetEntity=Car.class, mappedBy="car_dealer", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
