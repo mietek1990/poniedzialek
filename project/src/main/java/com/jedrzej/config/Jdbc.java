@@ -18,7 +18,6 @@ public class Jdbc {
 	
 	@Bean
 	public JdbcTemplate pobierzJDBCTemplate(){
-//		System.out.println("dsghgsgdsfhsdgfhbgfdshkgfbsdakbgf" + databaseURL);
 		BasicDataSource ds=new BasicDataSource();
 		ds.setDriverClassName("org.postgresql.Driver");
 		ds.setUrl(databaseURL);
