@@ -96,7 +96,7 @@ public class Main extends Application {
 			border.setCenter(hCenter);
 			
 			Scene scene = new Scene(border,600,600);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setTitle("Car Dealer");
 			stage.setScene(scene);
 			stage.show();
