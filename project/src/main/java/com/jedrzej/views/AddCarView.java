@@ -16,39 +16,29 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import org.springframework.beans.factory.annotation.Value;
-
+import com.jedrzej.config.Logger;
 import com.jedrzej.model.Car;
 import com.jedrzej.model.CarDealer;
 import com.jedrzej.services.CarService;
 
 public class AddCarView {
-	@Value("${mark}")
-	private static String mark;
-	@Value("${model}")
-	private static String model;
-	@Value("${mileage}")
-	private static String mileage;
+		
+	private static Label markLabel = new Label("Marka:");
+	private static Label modelLabel = new Label("Model:");
+	private static Label mileageLabel = new Label("Przegieg:");
+	private static Label yearsLabel = new Label("Rocznik:");
+	private static Label decriptionLabel = new Label("Przebieg:");
+	
+	private static TextField markField = new TextField();
+	private static TextField modelField = new TextField();
+	private static TextField mileageField = new TextField();
+	private static TextField yearsField = new TextField();
+	private static TextArea descriptionArea = new TextArea();
+	
+	private static Button saveButton = new Button("Zapisz samochod");
 
 	public static  void run(final Stage secondStage, final CarService carService, final String nameCarDealer) {
-//		Label markLabel = new Label(mark);
-//		Label modelLabel = new Label(model);
-//		Label mileageLabel = new Label(mileage);
-		
-		Label markLabel = new Label("Marka:");
-		Label modelLabel = new Label("Model:");
-		Label mileageLabel = new Label("Przebieg:");
-		Label yearsLabel = new Label("Rocznik:");
-		Label decriptionLabel = new Label("Opis:");
-		
-		final TextField markField = new TextField() ;
-		final TextField modelField = new TextField();
-		final TextField mileageField = new TextField();
-		final TextField yearsField = new TextField();
-		final TextArea descriptionArea = new TextArea();
-		
-		Button saveButton = new Button("Zapisz samochod");
-		
+				
         GridPane playerGrid = new GridPane();
         ColumnConstraints column1 = new ColumnConstraints(100);
         ColumnConstraints column2 = new ColumnConstraints(300);
@@ -101,8 +91,7 @@ public class AddCarView {
 						carService.addCar(sam);
 						secondStage.getScene().getWindow().hide();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Logger.log("Blad dodawania samochodu");
 					}
 				}
 				

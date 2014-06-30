@@ -11,12 +11,12 @@ public class Logger implements ApplicationListener<LoggerEvent>{
 	}
 	
 	
-	public void log(String message) {
+	public static void log(String message) {
 		System.out.println("LOGGER:" + message);
 	}
 
 
 	public void onApplicationEvent(LoggerEvent event) {
-		this.log(event.getMessage());
+		Logger.log(event.getMessage());
 	}
 }

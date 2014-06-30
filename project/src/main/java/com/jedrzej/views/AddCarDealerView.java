@@ -2,6 +2,8 @@ package com.jedrzej.views;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -20,6 +22,9 @@ import com.jedrzej.model.CarDealer;
 import com.jedrzej.services.CarDealerService;
 
 public class AddCarDealerView {
+	
+
+	
 
 	public static void run(final Stage secondStage, final CarDealerService carDealerService) {
 		

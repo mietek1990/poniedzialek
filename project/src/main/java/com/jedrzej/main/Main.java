@@ -40,7 +40,6 @@ public class Main extends Application {
 	ApplicationContext context;
 	CarService carService;
 	CarDealerService carDealerService;
-	private static Logger logger;
 	SpringAspect springAspect;
 	
 	static List<Stage> allStage = new ArrayList<Stage>();
@@ -119,10 +118,8 @@ public class Main extends Application {
 	private void initBean() throws IOException{
 		System.setProperty("spring.profiles.active", "development");
 	    context = new ClassPathXmlApplicationContext("applicationContext.xml");
-//		context = new AnnotationConfigApplicationContext(AllConfiguration.class); gcnfdjghc
 		carDealerService = context.getBean(CarDealerService.class);
 		carService = context.getBean(CarService.class);
-		logger = context.getBean(Logger.class);
 		
        CarDealer carDealer = (CarDealer)context.getBean("carDealer");
  
@@ -146,7 +143,7 @@ public class Main extends Application {
 						}
 					});
 				} else {
-					logger.log("Pobierze samochody z komisu o nazwie " + listLeft.getSelectionModel().getSelectedItem());
+					Logger.log("Pobierze samochody z komisu o nazwie " + listLeft.getSelectionModel().getSelectedItem());
 					initListCar(listLeft.getSelectionModel().getSelectedItem());
 					addCar.setDisable(false);
 					deleteCar.setDisable(true);
@@ -171,7 +168,7 @@ public class Main extends Application {
 						
 					});
 				} else {
-					logger.log("Pobierze samochod o nazwie: " + listRight.getSelectionModel().getSelectedItem());
+					Logger.log("Pobierze samochod o nazwie: " + listRight.getSelectionModel().getSelectedItem());
 					addCar.setDisable(true);
 					deleteCar.setDisable(false);
 					deleteCarDealer.setDisable(true);
@@ -182,7 +179,7 @@ public class Main extends Application {
 		addCarDealer.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
-				logger.log("Dodaje komis");
+				Logger.log("Otwieram okno dodania komisu");
 				Stage secondStage = new Stage();
 				allStage.add(secondStage);
 				AddCarDealerView.run(secondStage, carDealerService);
@@ -199,7 +196,7 @@ public class Main extends Application {
 		addCar.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
-				logger.log("Dodaje samochod");
+				Logger.log("Otwieram okno dodania samochodu");
 				Stage secondStage = new Stage();
 				allStage.add(secondStage);
 				AddCarView.run(secondStage, carService, listLeft.getSelectionModel().getSelectedItem());

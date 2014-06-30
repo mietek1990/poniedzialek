@@ -19,25 +19,25 @@ import com.jedrzej.model.CarDealer;
 import com.jedrzej.services.CarService;
 
 public class ModyfiCarView {
+	
+	private static Label markLabel = new Label("Marka:");
+	private static Label modelLabel = new Label("Model:");
+	private static Label mileageLabel = new Label("Przegieg:");
+	private static Label yearsLabel = new Label("Rocznik:");
+	private static Label decriptionLabel = new Label("Przebieg:");
+	
+	private static TextField markField = new TextField();
+	private static TextField modelField = new TextField();
+	private static TextField mileageField = new TextField();
+	private static TextField yearsField = new TextField();
+	private static TextArea descriptionArea = new TextArea();
+	
+	private static Button updateButton = new Button("Aktualizuj samochod");
 
 	public static void run(final Stage secondStage, final CarService carService, String nameCar, String nameCarDealer) {
 		String [] result = nameCar.split(" ");
 		final Car car = carService.findCar(Integer.parseInt(result[2]));
 		final CarDealer carDealer = carService.findCarDealer(nameCarDealer);
-		
-		Label markLabel = new Label("Marka:");
-		Label modelLabel = new Label("Model:");
-		Label mileageLabel = new Label("Przebieg:");
-		Label yearsLabel = new Label("Rocznik:");
-		Label decriptionLabel = new Label("Opis:");
-		
-		final TextField markField = new TextField(car.getMark()) ;
-		final TextField modelField = new TextField(car.getModel());
-		final TextField mileageField = new TextField(car.getMileage());
-		final TextField yearsField = new TextField(car.getYears()+"");
-		final TextArea descriptionArea = new TextArea(car.getDescription());
-		
-		Button updateButton = new Button("Aktualizuj samochod");
 		
         GridPane playerGrid = new GridPane();
         ColumnConstraints column1 = new ColumnConstraints(100);
