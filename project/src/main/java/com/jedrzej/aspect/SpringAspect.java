@@ -16,13 +16,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
+import com.jedrzej.config.Logger;
+
 @Configuration
 @EnableAspectJAutoProxy
 @Component
 @Aspect
 public class SpringAspect {
 	public SpringAspect(){
-		System.out.println("SpringAspect utworzony");
+		Logger.log("SpringAspect utworzony");
 	}
 //	@Before("execution(* com.jedrzej.services.CarDealer.*(..))")
 	@Before("execution(* com.jedrzej.services.CarService.listCar(..))")
@@ -31,8 +33,6 @@ public class SpringAspect {
 		String text = "AspectSpring logBefore : " + joinPoint.getSignature().getName();
 		
 		Label textLabel = new Label(text);
-
-		System.out.println(text);
 		
 		final Float[] values = new Float[] {-1.0f};
 		final ProgressIndicator[] pins = new ProgressIndicator[values.length];
@@ -60,8 +60,6 @@ public class SpringAspect {
 		String text = "AspectSpring logBefore : " + joinPoint.getSignature().getName();
 		
 		Label textLabel = new Label(text);
-
-		System.out.println(text);
 		
 		final Float[] values = new Float[] {-1.0f};
 		final ProgressIndicator[] pins = new ProgressIndicator[values.length];
@@ -89,8 +87,6 @@ public class SpringAspect {
 		
 		Label textLabel = new Label(text);
 
-		System.out.println(text);
-		
 		final Float[] values = new Float[] {-1.0f};
 		final ProgressIndicator[] pins = new ProgressIndicator[values.length];
 		
@@ -117,8 +113,6 @@ public class SpringAspect {
 		String text = "AspectSpring logBefore : " + joinPoint.getSignature().getName();
 		
 		Label textLabel = new Label(text);
-
-		System.out.println(text);
 		
 		final Float[] values = new Float[] {-1.0f};
 		final ProgressIndicator[] pins = new ProgressIndicator[values.length];
@@ -147,7 +141,6 @@ public class SpringAspect {
 		
 		Label textLabel = new Label(text);
 
-		System.out.println(text);
 		final Float[] values = new Float[] {-1.0f};
 		final ProgressIndicator[] pins = new ProgressIndicator[values.length];
 		
@@ -167,41 +160,4 @@ public class SpringAspect {
         scene.setRoot(vb);
         stage.show();
 }
-	
-//	final Float[] values = new Float[] {-1.0f, 0f, 0.6f, 1.0f};
-//	final Label [] labels = new Label[values.length];
-//	final ProgressBar[] pbs = new ProgressBar[values.length];
-//	final ProgressIndicator[] pins = new ProgressIndicator[values.length];
-//	final vbox vbs [] = new vbox [values.length];
-//
-//	    @Override
-//	    public void start(Stage stage) {
-//	        Group root = new Group();
-//	        Scene scene = new Scene(root, 300, 150);
-//	        scene.getStylesheets().add("progresssample/Style.css");
-//	        stage.setScene(scene);
-//	        stage.setTitle("Progress Controls");
-//	 
-//	 
-//	        for (int i = 0; i < values.length; i++) {
-//	            final Label label = labels[i] = new Label();
-//	            label.setText("progress:" + values[i]);
-//	 
-//	            final ProgressBar pb = pbs[i] = new ProgressBar();
-//	            pb.setProgress(values[i]);
-//	 
-//	            final ProgressIndicator pin = pins[i] = new ProgressIndicator();
-//	            pin.setProgress(values[i]);
-//	            final vbox vb = vbs[i] = new vbox();
-//	            vb.setSpacing(5);
-//	            vb.setAlignment(Pos.CENTER);
-//	            vb.getChildren().addAll(label, pb, pin);
-//	        }
-//	 
-//	        final VBox vb = new VBox();
-//	        vb.setSpacing(5);
-//	        vb.getChildren().addAll(vbs);
-//	        scene.setRoot(vb);
-//	        stage.show();
-//	    }
 }

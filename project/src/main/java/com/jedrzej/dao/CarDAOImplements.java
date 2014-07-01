@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.jedrzej.config.Logger;
 import com.jedrzej.model.Car;
 import com.jedrzej.model.CarDealer;
 
@@ -20,7 +21,7 @@ public class CarDAOImplements implements CarDAO {
 	private JdbcTemplate template;
 	
 	public CarDAOImplements(){
-		System.out.println("CarDAOImplements utworzona");
+		Logger.log("CarDAOImplements utworzona");
 	}
 
 	public void addCar(Car car) {

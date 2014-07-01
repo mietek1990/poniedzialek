@@ -68,7 +68,6 @@ public class ModyfiCarDealerView {
 				if 	(nameField.getText().isEmpty() ||
 						adressField.getText().isEmpty() ||
 						descriptionArea.getText().isEmpty()){
-					System.out.println("Pusto");
 					Logger.log("Puste pola w widoku modyfikacji CarDealer");
 				} else {
 					CarDealer komis = new CarDealer();

@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.jedrzej.config.Logger;
 import com.jedrzej.model.CarDealer;
 
 @Repository("CarDealerDAOImplements")
@@ -18,7 +19,7 @@ public class CarDealerDAOImplements implements CarDealerDAO {
 	private JdbcTemplate template;
 	
 	public CarDealerDAOImplements(){
-		System.out.println("CarDealerDAOImplements utworzona");
+		Logger.log("CarDealerDAOImplements utworzona");
 	}
 
 	public void addCarDealer(CarDealer carDealer) {

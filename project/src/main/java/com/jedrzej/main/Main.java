@@ -104,7 +104,7 @@ public class Main extends Application {
 			
 			 stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 		          public void handle(WindowEvent we) {
-		              System.out.println("Stage is closing");
+		        	  Logger.log("Stage is closing");
 		              
 		              for(int i = 0; i < allStage.size(); i++) 
 		            	  allStage.get(i).getScene().getWindow().hide();
