@@ -2,7 +2,6 @@ package com.jedrzej.validation;
 
 public class Validation{
 	
-	
 	public static boolean isNumeric(String text)  
 	{  
 	  try  

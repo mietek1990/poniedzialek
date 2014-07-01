@@ -41,7 +41,7 @@ public class Main extends Application {
 	CarDealerService carDealerService;
 	SpringAspect springAspect;
 	
-	static List<Stage> allStage = new ArrayList<Stage>();
+	List<Stage> allStage = new ArrayList<Stage>();
 	
 	Button addCarDealer;
 	Button deleteCarDealer;
@@ -115,7 +115,7 @@ public class Main extends Application {
 			initListCarDealer();
 	}
 	private void initBean() throws IOException{
-		System.setProperty("spring.profiles.active", "development");
+		System.setProperty("spring.profiles.active", "production");//production development
 	    context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		carDealerService = context.getBean(CarDealerService.class);
 		carService = context.getBean(CarService.class);

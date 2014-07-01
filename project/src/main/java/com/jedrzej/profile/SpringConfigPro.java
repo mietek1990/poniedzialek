@@ -9,7 +9,6 @@ import com.jedrzej.model.CarDealer;
 @Configuration
 @Profile("production")
 public class SpringConfigPro {
-
 	
 	@Bean
 	  public CarDealer carDealer(){
