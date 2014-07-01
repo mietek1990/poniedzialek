@@ -74,7 +74,7 @@ public class AddCarView {
 						yearsField.getText().isEmpty() ||
 						descriptionArea.getText().isEmpty() ||
 						mileageField.getText().isEmpty()){
-					System.out.println("Pusto");
+					Logger.log("Puste pola w widoku dodawania Car");
 				} else {
 					Car sam = new Car();
 					sam.setMark(markField.getText());
@@ -85,7 +85,6 @@ public class AddCarView {
 					
 					CarDealer carDealer = carService.findCarDealer(nameCarDealer);
 					sam.setCarDealer(carDealer);
-					System.out.println(" afdsdgsghf " + carDealer.getId());
 					
 					try {
 						carService.addCar(sam);
@@ -93,6 +92,7 @@ public class AddCarView {
 					} catch (IOException e) {
 						Logger.log("Blad dodawania samochodu");
 					}
+					Logger.log("Dodano samochod "  + sam.getMark());
 				}
 				
 			}

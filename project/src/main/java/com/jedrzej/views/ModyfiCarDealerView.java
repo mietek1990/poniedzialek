@@ -15,25 +15,27 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import com.jedrzej.config.Logger;
 import com.jedrzej.model.CarDealer;
 import com.jedrzej.services.CarDealerService;
 
 
 public class ModyfiCarDealerView {
+	
+	private static Label nameLabel = new Label("Nazwa:");
+	private static Label adressLabel = new Label("Adres:");
+	private static Label decriptionLabel = new Label("Opis:");
+	
+	private static TextField nameField = new TextField() ;
+	private static TextField adressField = new TextField();
+	private static TextArea descriptionArea = new TextArea();
+	
+	private static Button updateButton = new Button("Aktualizuj komis");
 
 	public static void run(final Stage secondStage, final CarDealerService carDealerService, String nameCarDealer) {
 
 		final CarDealer carDealerFromDatabase = carDealerService.findCarDealer(nameCarDealer);
-		Label nameLabel = new Label("Nazwa:");
-		Label adressLabel = new Label("Adres:");
-		Label decriptionLabel = new Label("Opis:");
-		
-		final TextField nameField = new TextField(carDealerFromDatabase.getName()) ;
-		final TextField adressField = new TextField(carDealerFromDatabase.getAdress());
-		final TextArea descriptionArea = new TextArea(carDealerFromDatabase.getDescription());
-		
-		Button updateButton = new Button("Aktualizuj komis");
-		
+	
         GridPane playerGrid = new GridPane();
         ColumnConstraints column1 = new ColumnConstraints(100);
         ColumnConstraints column2 = new ColumnConstraints(300);
@@ -64,6 +66,7 @@ public class ModyfiCarDealerView {
 						adressField.getText().isEmpty() ||
 						descriptionArea.getText().isEmpty()){
 					System.out.println("Pusto");
+					Logger.log("Puste pola w widoku modyfikacji CarDealer");
 				} else {
 					CarDealer komis = new CarDealer();
 					komis.setId(carDealerFromDatabase.getId());
@@ -72,6 +75,7 @@ public class ModyfiCarDealerView {
 					komis.setDescription(descriptionArea.getText());
 					
 					carDealerService.modifyCarDealer(komis);
+					Logger.log("Zmodyfikowano wpis "  + komis.getName());
 					secondStage.getScene().getWindow().hide();
 				}
 				

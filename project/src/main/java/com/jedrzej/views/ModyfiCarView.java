@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import com.jedrzej.config.Logger;
 import com.jedrzej.model.Car;
 import com.jedrzej.model.CarDealer;
 import com.jedrzej.services.CarService;
@@ -74,7 +75,7 @@ public class ModyfiCarView {
 						yearsField.getText().isEmpty() ||
 						descriptionArea.getText().isEmpty() ||
 						mileageField.getText().isEmpty()){
-					System.out.println("Pusto");
+					Logger.log("Puste pola w widoku modyfikacji Car");
 				} else {
 					Car sam = new Car();
 					sam.setId(car.getId());
@@ -86,6 +87,7 @@ public class ModyfiCarView {
 					sam.setCarDealer(carDealer);
 					
 					carService.updateCar(sam);
+					Logger.log("Zmodyfikowano samochod "  + sam.getMark());
 					secondStage.getScene().getWindow().hide();
 				}
 				

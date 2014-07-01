@@ -2,8 +2,6 @@ package com.jedrzej.views;
 
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,26 +16,23 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import com.jedrzej.config.Logger;
 import com.jedrzej.model.CarDealer;
 import com.jedrzej.services.CarDealerService;
 
 public class AddCarDealerView {
 	
-
+	private static Label nameLabel = new Label("Nazwa:");
+	private static Label adressLabel = new Label("Adres:");
+	private static Label decriptionLabel = new Label("Opis:");
 	
+	private static TextField nameField = new TextField() ;
+	private static TextField adressField = new TextField();
+	private static TextArea descriptionArea = new TextArea();
+	
+	private static Button saveButton = new Button("Zapisz komis");
 
 	public static void run(final Stage secondStage, final CarDealerService carDealerService) {
-		
-    
-		Label nameLabel = new Label("Nazwa:");
-		Label adressLabel = new Label("Adres:");
-		Label decriptionLabel = new Label("Opis:");
-		
-		final TextField nameField = new TextField() ;
-		final TextField adressField = new TextField();
-		final TextArea descriptionArea = new TextArea();
-		
-		Button saveButton = new Button("Zapisz komis");
 		
         GridPane playerGrid = new GridPane();
         ColumnConstraints column1 = new ColumnConstraints(100);
@@ -68,19 +63,21 @@ public class AddCarDealerView {
 				if 	(nameField.getText().isEmpty() ||
 						adressField.getText().isEmpty() ||
 						descriptionArea.getText().isEmpty()){
-					System.out.println("Pusto");
+					Logger.log("Puste pola w widoku dodawania CarDealer");
 				} else {
 					CarDealer komis = new CarDealer();
 					komis.setName(nameField.getText());
 					komis.setAdress(adressField.getText());
 					komis.setDescription(descriptionArea.getText());
-					
+
 					try {
 						carDealerService.addCarDealer(komis);
-						secondStage.getScene().getWindow().hide();
 					} catch (IOException e) {
-						e.printStackTrace();
+						Logger.log("Blad dodawania komisu");
 					}
+					Logger.log("Dodano komis "  + komis.getName());
+					secondStage.getScene().getWindow().hide();
+
 				}
 				
 			}
