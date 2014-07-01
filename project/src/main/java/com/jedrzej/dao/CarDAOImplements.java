@@ -39,9 +39,7 @@ public class CarDAOImplements implements CarDAO {
 		List <Car> listCarName = new ArrayList<Car>();
 
 		CarDealer carDealer = findCarDealer(nameCarDealer);
-        
-//        System.out.println(" INDEX " + carDealer.getId());
-		
+
         String sql1 = "select * from car where cardealer_id = ?";
         List<Map<String, Object>> tmp = template.queryForList(sql1, new Object[] { carDealer.getId() });
         
@@ -58,7 +56,6 @@ public class CarDAOImplements implements CarDAO {
 			listCarName.add(car);
 		}
 		
-//		System.out.println(" Ilosc samochodow " + listCarName.size());
 		return listCarName;
 	}
 

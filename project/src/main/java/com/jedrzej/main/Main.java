@@ -36,7 +36,6 @@ import com.jedrzej.views.ModyfiCarView;
 	
 public class Main extends Application {
 	
-//	AnnotationConfigApplicationContext context;
 	ApplicationContext context;
 	CarService carService;
 	CarDealerService carDealerService;
