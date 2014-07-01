@@ -36,6 +36,9 @@ public class ModyfiCarDealerView {
 
 		final CarDealer carDealerFromDatabase = carDealerService.findCarDealer(nameCarDealer);
 	
+		nameField.setText(carDealerFromDatabase.getName());
+		adressField.setText(carDealerFromDatabase.getAdress());
+		descriptionArea.setText(carDealerFromDatabase.getDescription());
         GridPane playerGrid = new GridPane();
         ColumnConstraints column1 = new ColumnConstraints(100);
         ColumnConstraints column2 = new ColumnConstraints(300);

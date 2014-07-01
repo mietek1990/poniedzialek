@@ -20,6 +20,7 @@ import com.jedrzej.config.Logger;
 import com.jedrzej.model.Car;
 import com.jedrzej.model.CarDealer;
 import com.jedrzej.services.CarService;
+import com.jedrzej.validation.Validation;
 
 public class AddCarView {
 		
@@ -75,6 +76,10 @@ public class AddCarView {
 						descriptionArea.getText().isEmpty() ||
 						mileageField.getText().isEmpty()){
 					Logger.log("Puste pola w widoku dodawania Car");
+				} else if (!Validation.isNumeric(yearsField.getText())){
+					Logger.log("Pole rocznik w widoku dodawania Car zawiera litery");
+				} else if (!Validation.isNumeric(mileageField.getText())){
+					Logger.log("Pole przebieg w widoku dodawania Car zawiera litery");
 				} else {
 					Car sam = new Car();
 					sam.setMark(markField.getText());
@@ -100,5 +105,7 @@ public class AddCarView {
 		
 
 	}
+	
+
     
 }

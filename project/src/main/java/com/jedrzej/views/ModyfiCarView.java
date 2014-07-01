@@ -18,6 +18,7 @@ import com.jedrzej.config.Logger;
 import com.jedrzej.model.Car;
 import com.jedrzej.model.CarDealer;
 import com.jedrzej.services.CarService;
+import com.jedrzej.validation.Validation;
 
 public class ModyfiCarView {
 	
@@ -39,6 +40,12 @@ public class ModyfiCarView {
 		String [] result = nameCar.split(" ");
 		final Car car = carService.findCar(Integer.parseInt(result[2]));
 		final CarDealer carDealer = carService.findCarDealer(nameCarDealer);
+		
+		markField.setText(car.getMark());
+		modelField.setText(car.getModel());
+		mileageField.setText(car.getMileage());
+		yearsField.setText(car.getYears()+"");
+		descriptionArea.setText(car.getDescription());
 		
         GridPane playerGrid = new GridPane();
         ColumnConstraints column1 = new ColumnConstraints(100);
@@ -63,7 +70,7 @@ public class ModyfiCarView {
 		leftBox.setSpacing(30);
 		
 		Scene secondScene = new Scene(leftBox, 420, 350);
-		secondStage.setTitle("Add Car");
+		secondStage.setTitle("Modify Car");
 		secondStage.setScene(secondScene);
 		secondStage.show();
 		
@@ -76,6 +83,10 @@ public class ModyfiCarView {
 						descriptionArea.getText().isEmpty() ||
 						mileageField.getText().isEmpty()){
 					Logger.log("Puste pola w widoku modyfikacji Car");
+				} else if (!Validation.isNumeric(yearsField.getText())){
+					Logger.log("Pole rocznik w widoku dodawania Car zawiera litery");
+				} else if (!Validation.isNumeric(mileageField.getText())){
+					Logger.log("Pole przebieg w widoku dodawania Car zawiera litery");
 				} else {
 					Car sam = new Car();
 					sam.setId(car.getId());
@@ -93,8 +104,6 @@ public class ModyfiCarView {
 				
 			}
 		});
-		
-
 	}
     
 }

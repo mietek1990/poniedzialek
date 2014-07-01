@@ -213,6 +213,7 @@ public class Main extends Application {
 		deleteCar.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
+				Logger.log("Usuwam samochod " + listRight.getSelectionModel().getSelectedItem());
 				carService.deleteCar(listRight.getSelectionModel().getSelectedItem());
 				initListCar(listLeft.getSelectionModel().getSelectedItem());
 			}
@@ -220,6 +221,7 @@ public class Main extends Application {
 		deleteCarDealer.setOnAction(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent event) {
+				Logger.log("Usuwam komis " + listLeft.getSelectionModel().getSelectedItem());
 				carDealerService.deleteCarDealer(listLeft.getSelectionModel().getSelectedItem());
 				initListCarDealer();
 				dataListRight.clear();
